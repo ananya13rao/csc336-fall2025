@@ -25,7 +25,6 @@ function changeMood() {
 
 
 
-
   
   const newNote = document.createElement("p");
   newNote.textContent = "You just switched moods!";
