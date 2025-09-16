@@ -24,6 +24,9 @@ function changeMood() {
 
 
 
+
+
+  
   const newNote = document.createElement("p");
   newNote.textContent = "You just switched moods!";
   newNote.style.fontStyle = "italic"; 
