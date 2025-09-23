@@ -1,0 +1,44 @@
+<html>
+    <head> <!---- add different colors and page setup -->
+        <link rel = 'stylesheet' href = './style.css'>
+        <script src = 'script.js' defer></script>
+        <title> Task List</title>
+    </head>
+
+
+    <!--- heading  -->
+
+    <h1> Please write your tasks below and rank their priority</h1>
+    <h3> 1 = Highest Priority, 5 = Lowest Priority</h3>
+
+
+    <!--- creating sections for user input -->
+    <body> 
+        <div id = "add-new-task">
+            <form id = "add-task-form">
+                <label for="task-name"> Task Name: </label>
+                <input id = "task-name" type = "text"> </input>
+
+                <label for="task-priority"> Priority of Task</label>
+                <input id = "task-priority" type = "number" min = "1" max = 5> </input>
+                
+                <button type="submit" id="add-task-button">Add New Task</button>
+            </form>
+        </div>
+
+        <h1>All Tasks</h1>
+        <div id = "all-task-info"></div>
+
+    </body>
+    
+
+
+
+
+
+
+
+
+
+
+</html>
