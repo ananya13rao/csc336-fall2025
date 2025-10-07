@@ -44,9 +44,5 @@ let recipeResponse = await fetch('https://www.themealdb.com/api/json/v1/1/random
   document.querySelector('#recipeDiv').appendChild(recipeP);
 }
 
-// adding the image
-let img = document.createElement('img');
-img.src = meal.strMealThumb;
-img.width = 200;
-document.querySelector('#recipeDiv').appendChild(img);
+
 
