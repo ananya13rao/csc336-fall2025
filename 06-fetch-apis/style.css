@@ -1,0 +1,31 @@
+body {
+  font-family: Georgia;
+  text-align: center;
+  padding: 40px;
+  background-color: #ffe0e0;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #36384c11;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.container{
+  display: grid; 
+  background-color: antiquewhite;
+  border: 10px; 
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
+
+header {
+  background: #3c2f2f;   
+  color: #fff;
+  text-align: center;
+  padding: 20px 12px;
+
+}
