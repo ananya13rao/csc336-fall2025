@@ -1,9 +1,4 @@
-// This is a function that makes an api call to the local route called '/world'.
-// All the '/world' route does (defined in server.js) is load the file world.json,
-// and then send that json over to the client (this file).
-// 
-// As a contrived demo, this function also displays the name of a notable person
-// in by generating HTML to add to a div.
+
 async function loadWorld() {
     const res = await fetch("/world");
     const data = await res.json();
@@ -12,7 +7,6 @@ async function loadWorld() {
         `<ul><li>${data.regions[0].towns[0].notable_people[0].name}</li></ul>`;
 }
 
-// This function will run when the script is loaded
 loadWorld();
 
 // Get a reference to the form (defined in html)

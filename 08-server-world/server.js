@@ -44,4 +44,4 @@ app.post("/excite", async (req, res) => {
     res.json(world);
 });
 
-app.listen(3000, () => console.log("Server running on http://localhost:3001"));
+app.listen(3000, () => console.log("Server running on http://localhost:3000"));
