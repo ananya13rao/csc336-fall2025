@@ -2,7 +2,7 @@ import express from "express";
 import fs from "fs";
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.static("./public"));
 app.use(express.json());
@@ -10,10 +10,43 @@ app.use(express.json());
 
 app.get("/world", async (req, res) => {
     // Read in the data, parse it into an object and send it over as json to the client
-    const dataString = await fs.readFileSync("world.json", "utf-8");
+    const dataString = await fs.readFile("world.json", "utf-8");
     const dataObject = JSON.parse(dataString);
     res.json(dataObject);
 });
+
+
+async function exciteHandler(req, res) {
+  try {
+    const worldData = await fs.readFile("world.json", "utf-8");
+    const world = JSON.parse(worldData);
+
+    const personToAddExcitementTo = req.body;
+    const targetName = personToAddExcitementTo?.name;
+
+    if (!targetName) {
+      return res.status(400).json({ error: "Missing 'name' in request body" });
+    }
+
+    for (let region of world.regions) {
+      for (let city of region.towns) {
+        for (let person of city.notable_people) {
+          if (person.name === targetName) {
+            person.name += "!!!";
+          }
+        }
+      }
+    }
+
+    await fs.writeFile("world.json", JSON.stringify(world, null, 2), "utf-8");
+
+    res.json(world);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Update failed" });
+  }
+}
+
 
 app.post("/excite", async (req, res) => {
     // Read the file that contains all of the world info
@@ -43,5 +76,6 @@ app.post("/excite", async (req, res) => {
     // send it back to the client.
     res.json(world);
 });
-
-app.listen(3000, () => console.log("Server running on http://localhost:3000"));
+app.post("/excite", exciteHandler);
+app.post("/update", exciteHandler);
+app.listen(PORT, () => console.log("Server running on http://localhost:${PORT}"));

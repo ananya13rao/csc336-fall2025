@@ -7,7 +7,7 @@
       "towns": [
 
         {
-          "name": "nether waste ",
+          "name": "nether waste",
           "population": 3120,
           "notable_people": [
 
@@ -20,7 +20,7 @@
 
                 {
                   "name": "potion of regeneration",
-                  "rarity": "common ",
+                  "rarity": "common",
                   "made_of": "water bottle + nether wart + ghast tear + glowstone dust",
                   "effect": "restores health over time"
                 }
@@ -116,7 +116,7 @@
               "items": [
                 "lead",
                 {
-                  "name": "map gragment",
+                  "name": "map fragment",
                   "rarity": "common",
                   "help": "directions to igloo basement"
                 }

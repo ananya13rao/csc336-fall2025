@@ -7,7 +7,7 @@
       "towns": [
 
         {
-          "name": "nether waste ",
+          "name": "nether waste",
           "population": 3120,
           "notable_people": [
 
@@ -20,7 +20,7 @@
 
                 {
                   "name": "potion of regeneration",
-                  "rarity": "common ",
+                  "rarity": "common",
                   "made_of": "water bottle + nether wart + ghast tear + glowstone dust",
                   "effect": "restores health over time"
                 }
@@ -83,7 +83,7 @@
               "items": [
                 "wheat seeds",
                 {
-                  "name": "haybale ",
+                  "name": "haybale",
                   "rarity": "common",
                   "material": "wheat"
                 }
@@ -95,7 +95,7 @@
               "name": "iron golem",
               "role": "defends villagers",
               "items": [
-                "poppy ",
+                "poppy",
                 {
                   "name": "anvil",
                   "rarity": "rare",
@@ -107,7 +107,7 @@
           ]
         },
         {
-          "name": "taiga village ",
+          "name": "taiga village",
           "population": 980,
           "notable_people": [
             {
@@ -116,7 +116,7 @@
               "items": [
                 "lead",
                 {
-                  "name": "map gragment",
+                  "name": "map fragment",
                   "rarity": "common",
                   "help": "directions to igloo basement"
                 }

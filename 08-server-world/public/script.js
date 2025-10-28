@@ -30,14 +30,42 @@ nameForm.addEventListener("submit", async (e) => {
     let formDataInObjectForm = Object.fromEntries(formData.entries());
 
     // Tell the server to add excitement to a 
-    const res = await fetch("/excite", {
+    const res = await fetch("/update", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formDataInObjectForm)
     });
 
-    const updatedWorld = await res.json();
+    await res.json();
     // document.getElementById("worldDiv").innerHTML =
     //     `<ul><li>${updatedWorld.regions[0].towns[0].notable_people[0].name}</li></ul>`;
     loadWorld();
-});
+
+const addMobForm = document.querySelector("#addMobForm");
+addMobForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const fd = new FormData(addMobForm);
+  const biomeName = fd.get("biomeName");     // currently unused by server
+  const villageName = fd.get("villageName"); // maps to townName
+  const mobName = fd.get("mobName");         // maps to name
+
+  // Build the body your server understands (using "addPerson")
+  const body = {
+    action: "addPerson",
+    townName: villageName,
+    name: mobName,
+    role: "Mob" // optional label so it shows up with a role
+    // biomeName is intentionally not sent; you can add it later if you update server logic
+  };
+
+  const res = await fetch("/update", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body)
+  });
+
+  await res.json();
+  loadWorld();
+  addMobForm.reset();
+})});

@@ -1,26 +1,38 @@
 <html>
 
   <head>
-    <img src = "minecraftimage.jpeg">
-    <title>My Minecraft World</title>
+    <title>Minecraft World</title>
     <link rel = 'stylesheet' href = './style.css'>
   </head>
 
   <body>
-    <h1>My Minecraft World</h1>
+    <img src = "minecraftimage.jpeg">
+    <h1>Build Your Own Minecraft World</h1>
     <div id="world"></div>
 
-    <h2>Add a New Biome</h2>
-    <form id="updateForm">
-      <label>Sub-Biome: <input name="subbiomeName" required /></label><br>
-      <label>Village Name: <input name="villageName" required /></label><br>
-      <label>Mob: <input name="mobName" required /></label><br>
+    
+    <h2>Add a Mob to a Village</h2>
+    <form id="addMobForm">
+      <label>
+        Biome (region):
+        <input name="biomeName" placeholder="the overworld" />
+      </label>
+      <br />
+      <label>
+        Village name:
+        <input name="villageName" placeholder="plains village" required />
+      </label>
+      <br />
+      <label>
+        Mob name:
+        <input name="mobName" placeholder="iron golem" required />
+      </label>
+      <br />
       <button type="submit">Add Mob</button>
     </form>
 
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
   </body>
-
-  
 </html>
+
 
