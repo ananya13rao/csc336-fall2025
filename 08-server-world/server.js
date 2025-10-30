@@ -2,80 +2,59 @@ import express from "express";
 import fs from "fs";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+
 
 app.use(express.static("./public"));
 app.use(express.json());
 
 
-app.get("/world", async (req, res) => {
+app.get("/world",  (req, res) => {
     // Read in the data, parse it into an object and send it over as json to the client
-    const dataString = await fs.readFile("world.json", "utf-8");
+    const dataString =  fs.readFile("world.json", "utf-8");
     const dataObject = JSON.parse(dataString);
     res.json(dataObject);
 });
 
+app.post("/add-mob", async (req,res) => {
+  const worldData = fs.readFileSync("/world.json", "utf-8");
+  const world = JSON.parse(worldData);
 
-async function exciteHandler(req, res) {
-  try {
-    const worldData = await fs.readFile("world.json", "utf-8");
-    const world = JSON.parse(worldData);
+  const body = req.body; 
+  const townName = body?.townName; 
+  const mobName = body?.name; 
+  const role = body?.role || "Mob";
 
-    const personToAddExcitementTo = req.body;
-    const targetName = personToAddExcitementTo?.name;
+  if (!townName || !mobName) {
+    return res.status(400).json({error: "missing town name or name"});
 
-    if (!targetName) {
-      return res.status(400).json({ error: "Missing 'name' in request body" });
-    }
+  }
 
-    for (let region of world.regions) {
-      for (let city of region.towns) {
-        for (let person of city.notable_people) {
-          if (person.name === targetName) {
-            person.name += "!!!";
-          }
-        }
+  let townRef = null; 
+  for (let region of world.regions) {
+    for (let town of region.towns) {
+      if (town.name == townName) {
+        townRef=town;
+        break;
       }
     }
-
-    await fs.writeFile("world.json", JSON.stringify(world, null, 2), "utf-8");
-
-    res.json(world);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Update failed" });
+    if (townRef) break; 
   }
+
+  // if the town is exists add this mob
+if (townRef) {
+  if (!Array.isArray(townRef.notable_people)) townRef.notable_people = [];
+  townRef.notable_people.push({name: mobName, role,  items: [] });
+}else {
+  return res.status(404).json({error: "town ont found"})
+  }
+
+fs.writeFileSync("world.json", JSON.stringify(world,null,2));
+res.json(world); 
+
 }
 
 
-app.post("/excite", async (req, res) => {
-    // Read the file that contains all of the world info
-    const worldData = await fs.readFileSync("./world.json", "utf-8");
-    // As readFile brought in the data as a string, parse it into a JS object.
-    const world = JSON.parse(worldData);
+);
 
-    // req.body is the json object sent to us from the client. 
-    // NOTE: it was parsed automatically by express (that's what the app.use(express.json()); does above)
-    const personToAddExcitementTo = req.body;
-    
-    // Find the person in one of the regions or cities, and add excitement to their name!
-    for (let region of world.regions) {
-        for (let city of region.towns) {
-            for (let person of city.notable_people) {
-                if (person.name === personToAddExcitementTo.name) {
-                    person.name += "!!!";
-                }
-            }
-        }
-    }
-
-    // Write it back to file
-    await fs.writeFileSync("world.json", JSON.stringify(world, null, 2));
-
-    // Now that we've modified the world data, and written it back to file
-    // send it back to the client.
-    res.json(world);
-});
-app.post("/excite", exciteHandler);
-app.post("/update", exciteHandler);
-app.listen(PORT, () => console.log("Server running on http://localhost:${PORT}"));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT,() => console.log(`Server running on http://localhost:${PORT}`));
