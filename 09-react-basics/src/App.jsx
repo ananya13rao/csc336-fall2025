@@ -1,60 +1,113 @@
 import { useState } from "react";
+import InventoryItem from "./components/InventoryItem.jsx";
+import MobItem from "./components/MobItem.jsx"; 
 
 function App() {
   
-  const [task, setTask] = useState(""); 
 
-  const [todos, setTodos] = useState([ // list stored in State
-    {
-      task: "Do homework", 
-      complete: false,
+  // inventory component
+  const [itemText, setItemText] = useState(""); 
+  const [inventory, setInventory] = useState([
+    { name: "Diamond",
+      amount: 64,
       id: 1
     }, 
-    {
-      task: "Clean room", 
-      complete: true,
+    { name: "Spruce Wood", 
+      amount: 32,
       id: 2
-    },
+    }, 
     {
-      task: "Make dinner",
-      complete: true,
+      name: "Cooked Porkchop",
+      amount: 16,
       id: 3
     }
-  ]); 
+  ])
 
-  function addTodo() {
-    let newTodo = {
-      task: task,
-      complete: false,
+  function addItem() {
+    const newItem = {
+      name: i,
+      amount: 1,
       id: Date.now()
+    }; 
+    
+
+    setInventory([...inventory, newItem]); 
+    setItemText(""); 
+  }
+
+  // nearby mobs
+  const [mobText, setMobText] = useState("");
+  const [mobs, setMobs] = useState([
+    { name: "Cow",
+      hostile: false,
+      id: 1
+    }, 
+    { name: "Skeleton", 
+      hostile: true,
+      id: 2
+    }, 
+    {
+      name: "Pig",
+      hostile: false,
+      id: 3
     }
 
-    setTodos([...todos, newTodo]); 
-    setTask("");
+  ]);
+
+  function addMob() {
+    const newMob = {
+      name: navigator,
+      hostile: false,
+      id: Date.now()
+    };
+
+    setMobs([...mobs, newMob]);
+    setMobText(""); 
+
   }
+  
+
+  
+
+
+
+
+
+
 
   return (
     <div> {/*ui*/}
-
+    <h2>Inventory</h2>
       <input 
         type = "text"
-        value={task}
-        onChange={(e) => setTask(e.target.value)}
+        value={itemText}
+        onChange={(e) => setItemText(e.target.value)}
       />
-      <button onClick={addTodo}>Add Todo</button>
+      <button onClick={addItem}>Add Item to Inventory</button>
 
       <ul>
-        {}
-        {}
-        {}
-        {}
-        {}
-        {todos.map((todo) => (
-        <TodoItem todo={todo} key = {todo.id}/>
+      
+        {inventory.map((it) => (
+        <InventoryItem item={itm} key = {itm.id}/>
         ))}
-
       </ul>
 
+      <h2>Nearby Mobs!</h2>
+      <input 
+        type="text"
+        value={mobText}
+        onChange={(e) => setMobText(e.target.value)}
+      />
+
+      <button onClick={addMob}>Add Mob</button>
+
+      <ul>
+        {mobs.map((mob) => (
+          <MobItem mob={mob} key={mob.id} />
+        )
+        
+        )}
+      </ul>
     </div>
   )
 
