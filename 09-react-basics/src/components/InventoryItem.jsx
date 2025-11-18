@@ -15,4 +15,4 @@ function InventoryItem({item}) {
     )
 }
 
-export default TodoItem
+export default InventoryItem; 
