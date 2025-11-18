@@ -25,7 +25,7 @@ function App() {
 
   function addItem() {
     const newItem = {
-      name: i,
+      name: itemText,
       amount: 1,
       id: Date.now()
     }; 
@@ -56,7 +56,7 @@ function App() {
 
   function addMob() {
     const newMob = {
-      name: navigator,
+      name: mobText,
       hostile: false,
       id: Date.now()
     };
@@ -88,7 +88,7 @@ function App() {
       <ul>
       
         {inventory.map((it) => (
-        <InventoryItem item={itm} key = {itm.id}/>
+        <InventoryItem item={it} key = {it.id}/>
         ))}
       </ul>
 
