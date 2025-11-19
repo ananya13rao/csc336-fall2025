@@ -1,0 +1,58 @@
+front-end 
+HTML
+CSS
+Javascript 
+    asynchronous Javascript
+        fetch
+            promises
+            asynch/await
+
+
+back-end (server)
+server
+    node-Javascript
+    express package
+        when you create an API (interface w the server) always, conceptually, doing the same thing 
+            CRUD operations/endpoints (create, read, update, delete) - when creating API it has to have these abilities 
+                in HTML it's post (posting data, allowing us to post data from a JSON), reading data is the GET, update is put, and delete is just delete
+
+
+read/write files - can't do it on the frond end because you don't want your os changing your files on your computer
+store data 
+    JSON file way 
+    Mongodb
+
+deployed front-end stuff using github pages 
+used render for the backend stuff
+
+Front-end web frameworks 
+React 
+    Generates HTML/JS/CS
+    react gives us the ability to create single-page apps (SPA)
+        dynamically modify the DOM based on "state" (state is a react concept - react has "states" and says to re-render the website if it detects state changes)
+    custom HTML elements (parameterable, can add parameters)
+    in react, you're just creating and passing around functions. confusion is usually behind variable scope and any weird syntax 
+    loops for arrays : for, for each (have a function applied to each variable in an array), while, maps (creates a new array, returns a new array), for(let a of arr)
+
+
+Final proj + assignment 
+
+server side 
+-  persistent data on the server side 
+- for 100% use Mongodb
+- can also store data in a json file 
+- contribed to have a server side for a portfolio
+- to work with Mongodb you have to have secret login info 
+    it's a database on someone's computer
+    learn how mongodb influences client-side/static hosting and server
+
+
+databases
+- non relational (mongodb): 
+- relational: a spreadsheet. can see the data as rows or columns. sql, 
+
+advice
+- have consistent data that communicates 
+- make sure pieces are working 
+- figure out how to interact with the backend 
+- check the final course schedule to see what needs to be implemented for the project

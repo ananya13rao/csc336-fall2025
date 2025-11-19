@@ -1,6 +1,6 @@
 import { useState,useEffect} from "react"; 
 
-function RandomDog() {
+export default function RandomDog() {
     const [dogUrl, setDogUrl] = useState[""]; 
 
     function fetchDog() {

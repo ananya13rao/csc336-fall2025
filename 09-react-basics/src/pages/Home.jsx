@@ -1,6 +1,6 @@
 import { useState } from "react";
-import InventoryItem from "./components/InventoryItem.jsx";
-import MobItem from "./components/MobItem.jsx"; 
+import InventoryItem from "../components/InventoryItem.jsx";
+import MobItem from "../components/MobItem.jsx"; 
 
 function Home() {
   
@@ -112,3 +112,4 @@ function Home() {
   )
 
 }
+export default Home;

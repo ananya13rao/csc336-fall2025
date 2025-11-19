@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom"; 
 
 import Home from "./pages/Home.jsx"; 
-import About from ".pages/About.jsx";
+import About from "./pages/About.jsx";
 import RandomDog from "./pages/RandomDog.jsx"; 
 
 function App() {
@@ -11,8 +11,8 @@ function App() {
    
       <nav>
         <NavLink to = "/">Home</NavLink>
-        <NavLink to = "/">About</NavLink>
-        <NavLink to = "/">Random Dog</NavLink>
+        <NavLink to = "/about">About</NavLink>
+        <NavLink to = "/dog">Random Dog</NavLink>
       </nav>
 
       <Routes>
