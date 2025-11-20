@@ -2,7 +2,7 @@ import { useState } from "react";
 import InventoryItem from "../components/InventoryItem.jsx";
 import MobItem from "../components/MobItem.jsx"; 
 
-function Home() {
+export default function Home() {
   
 
   // inventory component
@@ -112,4 +112,3 @@ function Home() {
   )
 
 }
-export default Home;

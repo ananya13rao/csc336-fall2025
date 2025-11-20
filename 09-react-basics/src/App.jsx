@@ -7,7 +7,7 @@ import RandomDog from "./pages/RandomDog.jsx";
 function App() {
   return (
     <>
-    <BrowserRouter basename = {process.env.PUBLIC_URL}>
+    <BrowserRouter>
    
       <nav>
         <NavLink to = "/">Home</NavLink>
