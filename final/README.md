@@ -13,7 +13,7 @@ I used micromodal to add a little modal describing what types of tasks they can 
 Tasks display as soon as they are added and will show up without having to manually refresh the web service. The CSS is meant to 
 give off a clean, productive energy, hoping to allow users to feel ready to focus and get their tasks accomplished.
 
-I really struggled with the render aspect of this, so I believe it does not completely run. I apologize for this. 
+I really struggled with the render and API aspect of this, so I believe it does not completely run. I apologize for this. 
 
 front end: https://csc336-fall2025-final2.onrender.com
 back end: https://csc336-fall2025-final1.onrender.com
