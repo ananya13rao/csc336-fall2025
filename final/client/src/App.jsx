@@ -25,17 +25,18 @@ function App() {
     window.MicroModal.init()
   }, []);
 
-  useEffect(() => { async function fetchTasks() {
+  const API_URL = "https://csc336-fall2025-final1.onrender.com/api/items";
+
+useEffect(() => {
+  async function fetchTasks() {
     try {
       const res = await fetch(API_URL);
-      if (!res.ok) throw new Error("tasks not loading");
       const data = await res.json();
       setTasks(data);
     } catch (err) {
       console.error("can't get tasks", err);
     }
   }
-
   fetchTasks();
 }, []);
   

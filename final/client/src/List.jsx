@@ -6,24 +6,25 @@ function AddTask(props) {
     const [type, setType] = useState("")
     const [dueDate, setDueDate] = useState("")
     
-    async function handleSubmit(e) {
-      e.preventDefault();
+    const API_URL = "https://csc336-fall2025-final1.onrender.com/api/items";
 
-    const newTask = { name, type, dueDate };
+async function handleSubmit(e) {
+  e.preventDefault();
 
-    const response = await fetch("http://localhost:3000/api/items", {
+  const newTask = { name, type, dueDate };
+
+  const response = await fetch(API_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(newTask)
-    });
+  });
 
-    const result = await response.json();
+  const result = await response.json();
+  props.setTasks(prev => prev.concat(result));
 
-    props.setTasks(prev => prev.concat(result));
-
-    setName("");
-    setType("");
-    setDueDate("");
+  setName("");
+  setType("");
+  setDueDate("");
 }
 
     return (
