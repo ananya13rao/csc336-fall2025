@@ -5,6 +5,7 @@ import AddTask from './List.jsx'
 import tasksData from "./tasksData.json"
 import './App.css' // change to customize
 import ModalAdd from './Micromodal.jsx'
+const API_URL = "http://localhost:3000/api/items"; 
 
 // have each task become its own card
 // based on the type of card have the avatar of the card change 
@@ -17,8 +18,6 @@ import { useState, useEffect } from 'react';
 import { Routes, Route, Link} from 'react-router-dom'
 
 
-
-
 function App() {
   const [tasks, setTasks] = useState([]) // = useState({something: 0});
 
@@ -26,25 +25,24 @@ function App() {
     window.MicroModal.init()
   }, []);
 
-  useEffect(() => {
-    if (localStorage.getItem("exampleTasks")) {
-      setTasks(JSON.parse(localStorage.getItem("exampleTasks")))
-    } else { 
-      setTasks(tasksData);
+  useEffect(() => { async function fetchTasks() {
+    try {
+      const res = await fetch(API_URL);
+      if (!res.ok) throw new Error("tasks not loading");
+      const data = await res.json();
+      setTasks(data);
+    } catch (err) {
+      console.error("can't get tasks", err);
     }
+  }
 
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("exampleTasks", JSON.stringify(tasks))
-  }, [tasks]);
+  fetchTasks();
+}, []);
+  
 
 
-   //useEffect(()=> {
-  //   fetch("https://localhost:3000/api/data")
-//        .then(result=>result.json())
-//        .then(data=>setFromServer(data)); 
-//  }, []);
+
+
 
   return(
     <div className='app'>

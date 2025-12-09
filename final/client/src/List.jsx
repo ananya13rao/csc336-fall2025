@@ -6,13 +6,25 @@ function AddTask(props) {
     const [type, setType] = useState("")
     const [dueDate, setDueDate] = useState("")
     
-    function handleSubmit(x) {
-        x.preventDefault()
-        props.setTasks(prev => prev.concat({name, type, dueDate, id: Date.now()}))
-        setName("")
-        setType("")
-        setDueDate("")
-    }
+    async function handleSubmit(e) {
+      e.preventDefault();
+
+    const newTask = { name, type, dueDate };
+
+    const response = await fetch("http://localhost:3000/api/items", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(newTask)
+    });
+
+    const result = await response.json();
+
+    props.setTasks(prev => prev.concat(result));
+
+    setName("");
+    setType("");
+    setDueDate("");
+}
 
     return (
         <>

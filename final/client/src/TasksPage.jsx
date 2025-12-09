@@ -2,9 +2,12 @@ function TasksPage({tasks, setTasks }) {
 
     const tasksOverall = tasks || [];
 
-    function deleteTasks(idDelete) {
-        setTasks(prevTasks => prevTasks.filter(task=> task.id !== idDelete)); 
+    async function deleteTasks(idDelete) {
+    await fetch(`http://localhost:3000/api/items/${idDelete}`, {
+     method: "DELETE"
+      });
 
+    setTasks(prev => prev.filter(task => task.id !== idDelete));
     }
 
 

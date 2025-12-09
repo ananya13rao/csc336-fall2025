@@ -1,7 +1,9 @@
 [
 
-    {"id": 1, "name": "Read Ch. 5", "type": "Homework", "dueDate": "12/20"},
-    {"id": 2, "name": "Coding Project", "type": "Homework", "dueDate": "12/12"},
-    {"id": 3, "name": "Clean Room", "type": "Chores", "dueDate": "12/9"}
+[
+  { "id": 1, "name": "Read Ch. 5", "type": "homework", "dueDate": "2025-12-20" },
+  { "id": 2, "name": "Coding Project", "type": "homework", "dueDate": "2025-12-12" },
+  { "id": 3, "name": "Clean Room", "type": "chores", "dueDate": "2025-12-09" }
+]
 
 ]
