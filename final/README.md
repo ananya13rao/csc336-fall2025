@@ -4,18 +4,16 @@ Which external libraries you used
 Anything you would like me to know
 
 
-did npm install express, no package.json or package-lock.json showed up
+My app is a student planner, where users can add tasks, categorize them by what they are, and add the date of when it must be done by. When users
+choose a specific category, the card shown turns into a specific color. by color coordinating their tasks, users will have an easy time looking at what tasks must get done, and what kind of tasks they have the most or least of. Users are able to delete tasks after they finish them. 
+
+I used micromodal to add a little modal describing what types of tasks they can use thi service for. 
 
 
-react is the front end, node/express is the back end. 
+Tasks display as soon as they are added and will show up without having to manually refresh the web service. The CSS is meant to 
+give off a clean, productive energy, hoping to allow users to feel ready to focus and get their tasks accomplished.
 
+I really struggled with the render aspect of this, so I believe it does not completely run. I apologize for this. 
 
-package.json
-
-"scripts" : {
-    "dev": "vite",
-    "build": "vite build", 
-    "postbuild": "cp -r dist/*../server/public" ,
-    "lint": "eslint .", 
-    "preview": "vite preview"
-}
+front end: https://csc336-fall2025-final2.onrender.com
+back end: https://csc336-fall2025-final1.onrender.com
